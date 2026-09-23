@@ -30,4 +30,9 @@ export const stagger = (staggerChildren = 0.08, delayChildren = 0): Variants => 
   show: { transition: { staggerChildren, delayChildren } },
 });
 
-export const viewportOnce = { once: true, amount: 0.12, margin: "0px 0px -6% 0px" } as const;
+/**
+ * Reveal as soon as the top of an element comes into view (minus a small bottom
+ * margin). A fractional `amount` is unreachable for anything taller than a few
+ * viewports — a long gallery would never reveal and leave blank space.
+ */
+export const viewportOnce = { once: true, amount: "some", margin: "0px 0px -8% 0px" } as const;
