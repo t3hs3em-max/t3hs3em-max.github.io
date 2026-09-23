@@ -1,0 +1,79 @@
+# Builds the static site and publishes it to GitHub Pages.
+# Runs on every push to `main` and can also be started by hand from the Actions tab.
+#
+# Optional repository variables (Settings → Secrets and variables → Actions → Variables):
+#   SITE_URL       – your final address, e.g. https://www.yourdomain.com (defaults to the github.io address)
+#   FORM_ENDPOINT  – a Formspree / Web3Forms / Basin endpoint so the contact form posts directly
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      # A source .zip uploaded through the GitHub website is unpacked and committed once.
+      - name: Unpack an uploaded source zip
+        if: hashFiles('*.zip') != ''
+        run: |
+          for z in ./*.zip; do
+            unzip -o -q "$z" -x '.github/*'
+            git rm -q "$z"
+          done
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Unpack portfolio source"
+          git push
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
+
+      - name: Build the static site
+        run: npm run build
+        env:
+          NEXT_PUBLIC_SITE_URL: ${{ vars.SITE_URL || 'https://t3hs3em-max.github.io' }}
+          NEXT_PUBLIC_FORM_ENDPOINT: ${{ vars.FORM_ENDPOINT || '' }}
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload the built site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
