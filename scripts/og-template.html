@@ -14,16 +14,20 @@
   .wrap { position: relative; padding: 64px 72px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
   .eyebrow { font-family: "Geist Mono", monospace; font-size: 15px; letter-spacing: .14em; text-transform: uppercase; color: #6e6f78; display: flex; align-items: center; gap: 12px; }
   .eyebrow i { width: 10px; height: 10px; border-radius: 50%; background: #17805e; display: inline-block; }
-  h1 { font-size: 78px; line-height: 1; letter-spacing: -.03em; font-weight: 500; max-width: 760px; margin-top: 26px; }
+  h1 { font-size: 72px; line-height: 1.02; letter-spacing: -.03em; font-weight: 500; max-width: 640px; margin-top: 26px; }
   h1 em { font-family: "Instrument Serif", Georgia, serif; font-style: italic; font-weight: 400; color: #2440e6; font-size: 1.06em; }
   .who { display: flex; align-items: center; gap: 16px; }
-  .who .mark { width: 52px; height: 52px; border-radius: 50%; background: #101114; color: #f6f5f1; display: grid; place-items: center; font-family: "Instrument Serif", serif; font-size: 30px; }
+  .who .mark { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; border: 2px solid #fff; box-shadow: 0 6px 16px -6px rgba(16,17,20,.35); }
+  .pcard { position: absolute; right: 70px; top: 96px;  width: 330px; height: 470px; border-radius: 36px; border: 1px solid #e2dfd7; background: radial-gradient(90% 70% at 50% 0%, #cfdcff 0%, rgba(207,220,255,0) 70%), radial-gradient(70% 60% at 100% 100%, #ffd8c2 0%, rgba(255,216,194,0) 72%), #fff; box-shadow: 0 40px 80px -40px rgba(16,17,20,.35); overflow: hidden; }
+  .portrait { position: absolute; left: 0; bottom: 0; width: 100%; height: 108%; object-fit: cover; object-position: 50% 0; }
+  .sel { position: absolute; right: 64px; top: 90px; width: 342px; height: 482px; border: 2px solid rgba(44,73,255,.7); border-radius: 40px; }
+  .tag { position: absolute; font-family: "Geist Mono", monospace; font-size: 13px; background: #2c49ff; color: #fff; padding: 3px 9px; border-radius: 7px; }
   .who b { font-size: 24px; font-weight: 500; display: block; }
   .who span { font-size: 16px; color: #6e6f78; }
   .phone { position: absolute; right: 88px; top: 70px; width: 232px; border-radius: 34px; padding: 8px; background: #0b0b0d; box-shadow: 0 40px 80px -30px rgba(0,0,0,.45); transform: rotate(6deg); }
   .phone .screen { border-radius: 27px; overflow: hidden; aspect-ratio: 390/844; background: #222; }
   .phone img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .card { position: absolute; right: 330px; top: 300px; width: 250px; background: #fff; border: 1px solid #e2dfd7; border-radius: 20px; padding: 16px; box-shadow: 0 30px 60px -30px rgba(16,17,20,.3); transform: rotate(-4deg); }
+  .card { position: absolute; right: 430px; top: 350px; width: 250px; background: #fff; border: 1px solid #e2dfd7; border-radius: 20px; padding: 16px; box-shadow: 0 30px 60px -30px rgba(16,17,20,.3); transform: rotate(-4deg); }
   .card .t { font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #6e6f78; margin-bottom: 12px; }
   .card .row { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
   .card .sw { width: 20px; height: 20px; border-radius: 6px; border: 1px solid #e2dfd7; }
@@ -40,7 +44,7 @@
       <h1>Simple and <em>meaningful</em> digital experiences.</h1>
     </div>
     <div class="who">
-      <div class="mark">T</div>
+      <img class="mark" src="../public/profile/tehseem-headshot.webp" alt="">
       <div><b>Tehseem Khan</b><span>Mobile apps · Web apps · Design systems · Figma</span></div>
     </div>
   </div>
@@ -51,6 +55,9 @@
     <div class="row"><i class="sw" style="background:#e4e1d9"></i><span>surface/200</span></div>
     <div class="row"><i class="sw" style="background:#ffd8c2"></i><span>tint/peach</span></div>
   </div>
-  <div class="phone"><div class="screen"><img id="shot" src="../public/projects/movesmart/home.webp" alt=""></div></div>
+  <div class="pcard"><img class="portrait" src="../public/profile/tehseem-portrait.webp" alt=""></div>
+  <div class="sel"></div>
+  <span class="tag" style="right:318px;top:58px">Tehseem.frame</span>
+  <span class="tag" style="right:156px;top:582px">UI/UX · Product Designer</span>
 </body>
 </html>

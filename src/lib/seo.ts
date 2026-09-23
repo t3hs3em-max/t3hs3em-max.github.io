@@ -16,7 +16,7 @@ export function personJsonLd() {
     url: site.url,
     email: `mailto:${site.email}`,
     telephone: site.phone,
-    image: `${site.url}/og.png`,
+    image: `${site.url}/profile/tehseem-headshot.jpg`,
     sameAs: site.social.map((s) => s.href),
     knowsAbout: ["UI Design", "UX Design", "Product Design", "Design Systems", "Figma", "Mobile App Design", "Web App Design", "Prototyping"],
     address: { "@type": "PostalAddress", addressCountry: "PK" },

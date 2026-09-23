@@ -7,7 +7,7 @@ import { Magnetic } from "@/components/ui/Magnetic";
 import { Em } from "@/components/ui/Primitives";
 import { Icon } from "@/components/ui/Icon";
 import { easeOut } from "@/lib/motion";
-import { HeroScene } from "./HeroScene";
+import { HeroPortrait } from "./HeroPortrait";
 
 const headline: { text: string; em?: boolean }[] = [
   { text: "UI/UX Designer" },
@@ -82,8 +82,8 @@ export function Hero() {
           </motion.ul>
         </div>
 
-        <motion.div initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, ease: easeOut, delay: 0.3 }} className="relative w-full max-w-[520px] justify-self-center lg:justify-self-end">
-          <HeroScene />
+        <motion.div initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, ease: easeOut, delay: 0.3 }} className="relative w-full max-w-[460px] justify-self-center px-4 pb-10 pt-4 sm:px-6 lg:justify-self-end">
+          <HeroPortrait />
         </motion.div>
       </div>
 

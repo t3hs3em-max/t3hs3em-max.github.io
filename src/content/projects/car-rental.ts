@@ -24,13 +24,23 @@ export const carRental: Project = {
   accentSoft: "#2A2118",
   cover: {
     src: "/projects/car-rental-website/cover",
-    alt: "Car rental website home page hero shown in a browser window: Be a luxury header, request form and three black cars",
+    alt: "Refreshed car rental home page hero in a browser window: Be a Luxury navigation, headline, three black cars and a booking panel",
     width: 1600,
     height: 1200,
   },
   screens: [
-    { src: "/projects/car-rental-website/home-top", alt: "Home page hero: navigation, headline “Need a Car On Rent? You Choose, We Deliver” and a booking request panel with location, from, to and time", width: 2160, height: 1350, frame: "browser", caption: "Hero — the booking request sits inside the first screen" },
-    { src: "/projects/car-rental-website/home-full", alt: "Full-length home page: hero with request form and three black cars, customer support, services with brand logos (Aston Martin, Ford, BMW, McLaren, Mercedes-Benz) and service promises", width: 2160, height: 4448, frame: "browser", caption: "Full page — hero, support, services, promises" },
+    { src: "/projects/car-rental-website/r-home-top", alt: "Refreshed home page hero: utility bar with phone and locations, navigation with Sign in and Book a car, headline “Need a car on rent? You choose, we deliver.”, three black cars and a booking panel with self-drive, chauffeur and long-term tabs", width: 2160, height: 1350, frame: "browser", caption: "Hero — the booking panel is the first thing you can act on" },
+    { src: "/projects/car-rental-website/r-home-full", alt: "Refreshed full-length home page: hero and booking panel, customer support card, fleet brands (Aston Martin, Ford, BMW, McLaren, Mercedes-Benz), four service promises, a call-to-action band and a footer with newsletter sign-up", width: 2160, height: 4448, frame: "browser", caption: "Full page — booking, support, brands, promises, call to action, footer" },
+  ],
+  iterations: [
+    {
+      title: "Hero: delivered version → September 2026 refresh",
+      note: "The underline-only “Choose location / From / To / Time” row becomes a real booking panel with labelled fields and defaults, “Send” becomes “Request a car”, navigation gains a Book a car action, and the hero copy explains the delivery promise in one sentence.",
+      before: { src: "/projects/car-rental-website/home-top", alt: "Home page hero as delivered", width: 2160, height: 1350, frame: "browser" },
+      after: { src: "/projects/car-rental-website/r-home-top", alt: "Refreshed home page hero", width: 2160, height: 1350, frame: "browser" },
+      beforeLabel: "Delivered",
+      afterLabel: "Refresh",
+    },
   ],
   wireframes: [],
   overview:
@@ -104,18 +114,19 @@ export const carRental: Project = {
       { name: "Panel", value: "8px" },
       { name: "Button", value: "4px" },
     ],
-    notes: ["Colour and type values are read from the Figma file. The condensed display face (Homenaje) carries the automotive, uppercase voice; Inter is used for form labels."],
+    notes: ["Colour and type values are read from the Figma file. The condensed display face (Homenaje) carries the automotive, uppercase voice; Inter is used for form labels.", "The September 2026 refresh keeps Homenaje and the amber accent, moves body copy and controls to Inter at 15–19 px, and uses 14–24 px radii with a filled amber primary button."],
     theme: { primary: "#E8890A", primaryInk: "#0A0A0A", surface: "#161616", bg: "#0A0A0A", text: "#FFFFFF", muted: "#B5B5B5", border: "#2A2A2A", radius: "6px", font: "inherit" },
   },
   solution: [
     "The hero pairs a confident headline with the booking request panel (location, from, to, time), so the primary action is available before any scrolling.",
     "A statement (“What we provide is the luxury transport and most comfortable experience”), a customer-support line and a row of luxury marques do the persuading; four service promises answer the usual objections at the end.",
     "A black canvas with white type, silver rules and a single amber accent gives the page an automotive, premium tone; the condensed uppercase display face and the three black cars do the rest.",
+    "In September 2026 I produced a higher-fidelity refresh of the page (self-initiated, not part of the client delivery): a real booking panel, brand cards with a “View cars” action, service promises with one-line explanations, a support card with call and message actions, a closing call-to-action band and a footer, with typos such as “Unkown” and “Cavier” removed. The refreshed frame sits next to the original in the Figma file.",
   ],
   outcome: {
     measured: false,
     headline: "A modern, conversion-focused home page design delivered ready for development.",
-    items: ["Full-length desktop home page", "Booking request panel and section components", "Custom assets per section"],
+    items: ["Full-length desktop home page", "Booking request panel and section components", "Custom assets per section", "September 2026 refresh of the full page in the same Figma file"],
     note: "No traffic or conversion data is available for this project.",
   },
   contentStatus: "partial",

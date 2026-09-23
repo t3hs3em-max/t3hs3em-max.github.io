@@ -34,13 +34,13 @@ export const inkwellPens: Project = {
   accentSoft: "#D6EFE6",
   cover: {
     src: "/projects/inkwell-pens/cover",
-    alt: "Inkwell Pens home and explore screens on two phones over a deep green background",
+    alt: "Refined Inkwell Pens home and explore screens on two phones over a deep green background",
     width: 1600,
     height: 1200,
   },
   screens: [
-    phone("home", "Inkwell Pens home screen: greeting, search, category chips, a flash-sale banner and trending products with ratings and prices", "Home — search, categories, flash sale and trending pens"),
-    phone("explore", "Explore screen with a category grid (Fountain, Rollerball, Ballpoint, Gel, Calligraphy, Gift sets) and a new-collection banner", "Explore — categories with item counts and a collection banner"),
+    phone("r-home", "Refined Inkwell Pens home screen: greeting, notification and cart buttons, search, category chips, a flash-sale banner with an end time and Shop now button, and trending products with ratings, struck-through old prices and add buttons above a labelled floating tab bar", "Home — search, categories, flash sale and trending pens"),
+    phone("r-explore", "Refined Explore screen with a category grid (Fountain, Rollerball, Ballpoint, Gel, Calligraphy, Gift sets), item counts and a Signature Gold Edition banner", "Explore — categories with item counts and a collection banner"),
   ],
   wireframes: [phone("wf-home", "Low-fidelity wireframe of the home screen with grey placeholders for imagery and labelled blocks", "Home wireframe — same structure, no colour or imagery")],
   iterations: [
@@ -51,6 +51,14 @@ export const inkwellPens: Project = {
       after: phone("home", "Home screen high-fidelity design"),
       beforeLabel: "Wireframe",
       afterLabel: "Hi-fi",
+    },
+    {
+      title: "Home: first hi-fi → September 2026 refinement",
+      note: "A usability pass on the same layout: 40 px chips and add buttons, higher-contrast secondary text, struck-through old prices, a clearer “ends in” sale timer, and a floating tab bar with labels and a solid active state. The pens are the same Figma components.",
+      before: phone("home", "First high-fidelity home screen"),
+      after: phone("r-home", "Refined home screen"),
+      beforeLabel: "First hi-fi",
+      afterLabel: "Refined",
     },
   ],
   overview:
@@ -159,11 +167,12 @@ export const inkwellPens: Project = {
     "Trending cards carry image, name, rating with review count, current price and the original price struck through, with a discount badge in the corner, so comparison happens on the grid.",
     "Explore turns the same categories into a full grid with item counts and gives new collections a dedicated banner, giving returning customers a second, browse-led entry point.",
     "A deep green-to-teal gradient with translucent cards and gold accents signals a premium, specialist shop rather than a generic marketplace, and lets the coloured pen illustrations carry the page.",
+    "A September 2026 refinement pass kept the layout and raised the usability floor: 40–44 px touch targets, stronger contrast on secondary text, clearer sale timing and a labelled tab bar with a solid active state.",
   ],
   outcome: {
     measured: false,
     headline: "A concept storefront with a documented wireframe-to-hi-fi progression and reusable product illustration components.",
-    items: ["Home (wireframe + hi-fi) and Explore screens", "Pen illustration component set", "Consistent card, chip and banner components"],
+    items: ["Home (wireframe + hi-fi) and Explore screens", "Pen illustration component set", "Consistent card, chip and banner components", "September 2026 refinement of both screens, built from the same pen components"],
     note: "Concept project; no usage or sales data exists. Next steps: product detail, cart and checkout screens, then a moderated test of the browse-to-cart path.",
   },
   contentStatus: "partial",

@@ -46,7 +46,27 @@ export default function AboutPage() {
             </div>
           </Reveal>
 
-          <Reveal delay={0.1} className="lg:pt-10">
+          <Reveal delay={0.1} className="flex flex-col gap-6 lg:pt-10">
+            <figure className="surface-card flex items-center gap-5 p-4 pr-6">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/profile/tehseem-headshot.webp"
+                srcSet="/profile/tehseem-headshot-400.webp 400w, /profile/tehseem-headshot.webp 800w"
+                sizes="112px"
+                width={800}
+                height={800}
+                alt={`Portrait of ${site.fullName}`}
+                className="size-24 shrink-0 rounded-[var(--radius-lg)] object-cover md:size-28"
+              />
+              <figcaption>
+                <p className="text-h4 font-medium text-ink">{site.fullName}</p>
+                <p className="mt-1 text-small text-text-2">UI/UX &amp; Product Designer</p>
+                <p className="mt-3 flex items-center gap-2 text-[0.8125rem] text-muted">
+                  <span className="size-2 rounded-full bg-success" aria-hidden />
+                  {site.availability}
+                </p>
+              </figcaption>
+            </figure>
             <dl className="surface-card grid grid-cols-2 gap-x-6 gap-y-6 p-6 md:p-8">
               {[
                 { k: "Based in", v: "Pakistan" },
