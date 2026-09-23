@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Route } from "next";
 import { nav, site } from "@/content/site";
 import { Icon } from "@/components/ui/Icon";
+import { ProfileAvatar } from "@/components/ui/ProfileAvatar";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -11,7 +12,7 @@ export function Footer() {
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
             <Link href="/" className="inline-flex items-center gap-3">
-              <span className="grid size-9 place-items-center rounded-full bg-ink text-bg font-display text-[1.05rem] leading-none">T</span>
+              <ProfileAvatar />
               <span className="text-[0.9375rem] font-medium tracking-tight text-ink">{site.name}</span>
             </Link>
             <p className="mt-5 max-w-sm text-small text-muted">

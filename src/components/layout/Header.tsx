@@ -9,6 +9,7 @@ import { nav, site } from "@/content/site";
 import { cn } from "@/lib/utils";
 import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/Button";
+import { ProfileAvatar } from "@/components/ui/ProfileAvatar";
 import { ThemeToggle } from "./ThemeToggle";
 import { easeOut } from "@/lib/motion";
 
@@ -19,9 +20,10 @@ function Logo() {
       className="group/logo flex items-center gap-3 rounded-full py-1 pr-2"
       aria-label={`${site.name} — home`}
     >
-      <span className="grid size-9 place-items-center rounded-full bg-ink text-bg font-display text-[1.05rem] leading-none tracking-tight transition-colors group-hover/logo:bg-accent group-hover/logo:text-accent-ink">
-        T
-      </span>
+      <ProfileAvatar
+        priority
+        className="transition-shadow group-hover/logo:ring-2 group-hover/logo:ring-accent group-focus-visible/logo:ring-2 group-focus-visible/logo:ring-accent"
+      />
       <span className="hidden text-[0.9375rem] font-medium tracking-tight text-ink sm:block">
         {site.name}
       </span>
