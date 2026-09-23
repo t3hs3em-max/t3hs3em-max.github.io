@@ -1,0 +1,46 @@
+{
+  "name": "tehseem-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "npx serve out",
+    "lint": "eslint src",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "images": "node scripts/build-images.mjs",
+    "og": "node scripts/build-og.mjs",
+    "salon:shots": "node scripts/salon-shots.mjs",
+    "qa": "node scripts/qa-shots.mjs",
+    "qa:a11y": "node scripts/qa-a11y.mjs",
+    "qa:final": "node scripts/qa-final-shots.mjs"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "motion": "^13.4.1",
+    "next": "16.3.6",
+    "next-themes": "^0.4.6",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "tailwind-merge": "^3.7.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@fontsource-variable/geist": "^5.3.0",
+    "@fontsource-variable/geist-mono": "^5.3.0",
+    "@fontsource-variable/inter": "^5.3.0",
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "@fontsource/instrument-serif": "^5.3.0",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.6",
+    "playwright": "^1.63.0",
+    "sharp": "^0.35.4",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "description": "Portfolio website of Tehseem Khan \u2014 UI/UX & Product Designer"
+}

@@ -1,0 +1,13 @@
+import path from "node:path";
+import { fileURLToPath, pathToFileURL } from "node:url";
+import { chromium } from "playwright";
+import sharp from "sharp";
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined });
+const page = await browser.newPage({ viewport: { width: 1200, height: 630 }, deviceScaleFactor: 2 });
+await page.goto(pathToFileURL(path.join(root, "scripts/og-template.html")).href);
+await page.waitForTimeout(300);
+const png = await page.screenshot({ type: "png" });
+await sharp(png).resize({ width: 1200 }).png({ compressionLevel: 9 }).toFile(path.join(root, "public/og.png"));
+await browser.close();
+console.log("✓ public/og.png");

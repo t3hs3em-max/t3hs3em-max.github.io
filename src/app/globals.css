@@ -1,0 +1,461 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Dark mode is class-based (next-themes toggles `.dark` on <html>).
+------------------------------------------------------------------- */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ------------------------------------------------------------------
+   1. DESIGN TOKENS
+   Every colour, radius, shadow and duration used by the UI lives here.
+   Change a value once and the whole site follows.
+------------------------------------------------------------------- */
+:root {
+  color-scheme: light;
+
+  /* Surfaces */
+  --bg: #f6f5f1;
+  --bg-elevated: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #edebe5;
+  --surface-3: #e4e1d9;
+
+  /* Text */
+  --ink: #101114;
+  --text: #1c1d22;
+  --text-2: #4b4c55;
+  --muted: #65666e;
+  --faint: #9c9da6;
+
+  /* Lines */
+  --border: #e2dfd7;
+  --border-strong: #c9c5bb;
+
+  /* Brand */
+  --accent: #2c49ff;
+  --accent-hover: #1f3ae6;
+  --accent-soft: #e6eaff;
+  --accent-ink: #ffffff;
+  --accent-text: #2440e6;
+
+  /* Ambient tints used by gradients / blobs */
+  --tint-peach: #ffd8c2;
+  --tint-sky: #cfdcff;
+  --tint-mint: #d3f1e5;
+
+  /* Feedback */
+  --success: #136b4f;
+  --success-soft: #dff5ec;
+  --danger: #c8321d;
+  --danger-soft: #fde7e3;
+
+  /* Radii */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-2xl: 36px;
+
+  /* Elevation */
+  --shadow-xs: 0 1px 2px rgba(16, 17, 20, 0.05);
+  --shadow-sm: 0 1px 2px rgba(16, 17, 20, 0.04), 0 4px 12px -4px rgba(16, 17, 20, 0.08);
+  --shadow-md: 0 2px 4px rgba(16, 17, 20, 0.04), 0 12px 32px -12px rgba(16, 17, 20, 0.16);
+  --shadow-lg: 0 4px 8px rgba(16, 17, 20, 0.04), 0 28px 60px -20px rgba(16, 17, 20, 0.24);
+  --shadow-ring: 0 0 0 1px var(--border);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.3, 0.64, 1);
+  --dur-fast: 160ms;
+  --dur-base: 260ms;
+  --dur-slow: 480ms;
+
+  /* Layout */
+  --container: 1200px;
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+  --section: clamp(4.5rem, 9vw, 8.5rem);
+  --header-h: 72px;
+}
+
+.dark {
+  color-scheme: dark;
+
+  --bg: #0c0c0e;
+  --bg-elevated: #121215;
+  --surface: #141418;
+  --surface-2: #1b1b20;
+  --surface-3: #232329;
+
+  --ink: #f4f3ef;
+  --text: #ececea;
+  --text-2: #b9b9c0;
+  --muted: #8f8f99;
+  --faint: #66666f;
+
+  --border: #26262c;
+  --border-strong: #3a3a42;
+
+  --accent: #5d74ff;
+  --accent-hover: #7b8eff;
+  --accent-soft: #1a2049;
+  --accent-ink: #0b0d1f;
+  --accent-text: #93a3ff;
+
+  --tint-peach: #3a2a24;
+  --tint-sky: #1c2540;
+  --tint-mint: #17302a;
+
+  --success: #4fd1a0;
+  --success-soft: #0f2a21;
+  --danger: #ff7a66;
+  --danger-soft: #3a1712;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 12px -4px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.4), 0 12px 32px -12px rgba(0, 0, 0, 0.7);
+  --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.4), 0 28px 60px -20px rgba(0, 0, 0, 0.8);
+}
+
+/* Expose the tokens to Tailwind utilities: bg-surface, text-muted, rounded-lg… */
+@theme inline {
+  --color-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-ink: var(--ink);
+  --color-text: var(--text);
+  --color-text-2: var(--text-2);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-text: var(--accent-text);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+
+  --font-sans: var(--font-sans), system-ui, sans-serif;
+  --font-display: var(--font-display), Georgia, serif;
+  --font-mono: var(--font-mono), ui-monospace, monospace;
+
+  --radius-xs: var(--radius-xs);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
+
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+
+  --ease-out: var(--ease-out);
+  --ease-in-out: var(--ease-in-out);
+  --ease-spring: var(--ease-spring);
+
+  --breakpoint-xs: 30rem;
+
+  /* Fluid type scale */
+  --text-display: clamp(2.75rem, 1.7rem + 4vw, 5.25rem);
+  --text-display--line-height: 0.98;
+  --text-display--letter-spacing: -0.025em;
+  --text-h1: clamp(2.375rem, 1.7rem + 2.8vw, 4.25rem);
+  --text-h1--line-height: 1.02;
+  --text-h1--letter-spacing: -0.025em;
+  --text-h2: clamp(1.875rem, 1.35rem + 2vw, 3rem);
+  --text-h2--line-height: 1.08;
+  --text-h2--letter-spacing: -0.02em;
+  --text-h3: clamp(1.375rem, 1.15rem + 0.8vw, 1.75rem);
+  --text-h3--line-height: 1.2;
+  --text-h3--letter-spacing: -0.015em;
+  --text-h4: 1.125rem;
+  --text-h4--line-height: 1.35;
+  --text-h4--letter-spacing: -0.01em;
+  --text-lead: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
+  --text-lead--line-height: 1.55;
+  --text-body: 1rem;
+  --text-body--line-height: 1.65;
+  --text-small: 0.875rem;
+  --text-small--line-height: 1.55;
+  --text-eyebrow: 0.75rem;
+  --text-eyebrow--line-height: 1.2;
+  --text-eyebrow--letter-spacing: 0.12em;
+}
+
+/* ------------------------------------------------------------------
+   2. BASE
+------------------------------------------------------------------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans), system-ui, sans-serif;
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
+  }
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-ink);
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  button,
+  [role="button"] {
+    cursor: pointer;
+  }
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+    color: var(--ink);
+  }
+  p {
+    text-wrap: pretty;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ------------------------------------------------------------------
+   3. UTILITIES / RECIPES
+------------------------------------------------------------------- */
+@utility container-x {
+  width: 100%;
+  max-width: calc(var(--container) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+@utility section-y {
+  padding-block: var(--section);
+}
+
+@utility eyebrow {
+  font-family: var(--font-mono), monospace;
+  font-size: var(--text-eyebrow);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+@utility font-display-italic {
+  font-family: var(--font-display), Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+@utility surface-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xs);
+}
+
+@utility hairline {
+  border-color: var(--border);
+}
+
+/* Subtle dot grid used behind the hero & CTA */
+@utility bg-dots {
+  background-image: radial-gradient(circle at 1px 1px, var(--border-strong) 1px, transparent 1.2px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+}
+
+/* Prose for long-form case-study text */
+.prose-case {
+  font-size: var(--text-lead);
+  line-height: 1.6;
+  color: var(--text-2);
+  max-width: 68ch;
+}
+.prose-case p + p {
+  margin-top: 1.1em;
+}
+.prose-case strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+.prose-case a {
+  color: var(--accent-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ------------------------------------------------------------------
+   4. MOTION PRIMITIVES
+------------------------------------------------------------------- */
+@keyframes float-y {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -10px, 0); }
+}
+@keyframes float-y-sm {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -6px, 0); }
+}
+@keyframes cursor-drift {
+  0% { transform: translate3d(0, 0, 0); }
+  30% { transform: translate3d(28px, -18px, 0); }
+  55% { transform: translate3d(12px, 22px, 0); }
+  80% { transform: translate3d(-16px, 6px, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+@keyframes scroll-hint {
+  0% { transform: translateY(0); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateY(14px); opacity: 0; }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to { background-position: 200% 0; }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.anim-float { animation: float-y 7s var(--ease-in-out) infinite; }
+.anim-float-sm { animation: float-y-sm 5.5s var(--ease-in-out) infinite; }
+.anim-cursor { animation: cursor-drift 9s var(--ease-in-out) infinite; }
+.anim-scroll-hint { animation: scroll-hint 1.8s var(--ease-in-out) infinite; }
+.anim-marquee { animation: marquee 40s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-float, .anim-float-sm, .anim-cursor, .anim-scroll-hint, .anim-marquee {
+    animation: none !important;
+  }
+}
+
+/* ------------------------------------------------------------------
+   5. VIEW TRANSITIONS (route changes + shared project images)
+------------------------------------------------------------------- */
+::view-transition {
+  pointer-events: none;
+}
+::view-transition-group(*) {
+  animation-timing-function: var(--ease-out);
+}
+::view-transition-group(.project-morph) {
+  animation-duration: 420ms;
+}
+::view-transition-image-pair(.project-morph) {
+  animation-name: vt-soft;
+}
+@keyframes vt-soft {
+  35% { filter: blur(2px); }
+}
+::view-transition-old(.page-out) {
+  animation: 140ms var(--ease-in-out) both vt-fade reverse;
+}
+::view-transition-new(.page-in) {
+  animation: 240ms var(--ease-out) 90ms both vt-fade, 420ms var(--ease-out) both vt-rise;
+}
+@keyframes vt-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes vt-rise {
+  from { transform: translateY(10px); }
+  to { transform: translateY(0); }
+}
+::view-transition-group(site-header) {
+  animation: none;
+  z-index: 100;
+}
+::view-transition-old(site-header) {
+  display: none;
+}
+::view-transition-new(site-header) {
+  animation: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+}
+
+/* ------------------------------------------------------------------
+   6. SMALL DETAILS
+------------------------------------------------------------------- */
+/* Thin, theme-aware scrollbars (WebKit + Firefox) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+
+/* Hide native cursor ring only where our custom cursor is active */
+.has-custom-cursor a,
+.has-custom-cursor button {
+  cursor: pointer;
+}
+
+/* Skip link */
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 1000;
+  padding: 10px 14px;
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: var(--radius-sm);
+  transform: translateY(-200%);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.skip-link:focus {
+  transform: translateY(0);
+}

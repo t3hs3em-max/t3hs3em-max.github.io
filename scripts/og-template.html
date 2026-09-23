@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+  @font-face { font-family: "Geist"; src: url("../src/fonts/geist-latin-wght-normal.woff2") format("woff2"); font-weight: 100 900; }
+  @font-face { font-family: "Instrument Serif"; src: url("../src/fonts/instrument-serif-latin-400-italic.woff2") format("woff2"); font-style: italic; }
+  @font-face { font-family: "Geist Mono"; src: url("../src/fonts/geist-mono-latin-wght-normal.woff2") format("woff2"); font-weight: 100 900; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body { font-family: Geist, system-ui, sans-serif; background: #f6f5f1; color: #101114; position: relative; }
+  .glow { position: absolute; border-radius: 50%; filter: blur(70px); opacity: .8; }
+  .dots { position: absolute; inset: 0; background-image: radial-gradient(circle at 1px 1px, #c9c5bb 1.2px, transparent 1.6px); background-size: 28px 28px; -webkit-mask-image: radial-gradient(ellipse at 30% 40%, black 30%, transparent 75%); }
+  .wrap { position: relative; padding: 64px 72px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; }
+  .eyebrow { font-family: "Geist Mono", monospace; font-size: 15px; letter-spacing: .14em; text-transform: uppercase; color: #6e6f78; display: flex; align-items: center; gap: 12px; }
+  .eyebrow i { width: 10px; height: 10px; border-radius: 50%; background: #17805e; display: inline-block; }
+  h1 { font-size: 78px; line-height: 1; letter-spacing: -.03em; font-weight: 500; max-width: 760px; margin-top: 26px; }
+  h1 em { font-family: "Instrument Serif", Georgia, serif; font-style: italic; font-weight: 400; color: #2440e6; font-size: 1.06em; }
+  .who { display: flex; align-items: center; gap: 16px; }
+  .who .mark { width: 52px; height: 52px; border-radius: 50%; background: #101114; color: #f6f5f1; display: grid; place-items: center; font-family: "Instrument Serif", serif; font-size: 30px; }
+  .who b { font-size: 24px; font-weight: 500; display: block; }
+  .who span { font-size: 16px; color: #6e6f78; }
+  .phone { position: absolute; right: 88px; top: 70px; width: 232px; border-radius: 34px; padding: 8px; background: #0b0b0d; box-shadow: 0 40px 80px -30px rgba(0,0,0,.45); transform: rotate(6deg); }
+  .phone .screen { border-radius: 27px; overflow: hidden; aspect-ratio: 390/844; background: #222; }
+  .phone img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .card { position: absolute; right: 330px; top: 300px; width: 250px; background: #fff; border: 1px solid #e2dfd7; border-radius: 20px; padding: 16px; box-shadow: 0 30px 60px -30px rgba(16,17,20,.3); transform: rotate(-4deg); }
+  .card .t { font-family: "Geist Mono", monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #6e6f78; margin-bottom: 12px; }
+  .card .row { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
+  .card .sw { width: 20px; height: 20px; border-radius: 6px; border: 1px solid #e2dfd7; }
+  .card .row span { font-family: "Geist Mono", monospace; font-size: 12px; color: #4b4c55; }
+</style>
+</head>
+<body>
+  <div class="glow" style="width:520px;height:520px;right:-120px;top:-160px;background:#cfdcff"></div>
+  <div class="glow" style="width:420px;height:420px;right:220px;bottom:-220px;background:#ffd8c2"></div>
+  <div class="dots"></div>
+  <div class="wrap">
+    <div>
+      <div class="eyebrow"><i></i>UI/UX Designer · Product Designer</div>
+      <h1>Simple and <em>meaningful</em> digital experiences.</h1>
+    </div>
+    <div class="who">
+      <div class="mark">T</div>
+      <div><b>Tehseem Khan</b><span>Mobile apps · Web apps · Design systems · Figma</span></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="t">Colour tokens</div>
+    <div class="row"><i class="sw" style="background:#2c49ff"></i><span>accent/500</span></div>
+    <div class="row"><i class="sw" style="background:#101114"></i><span>ink/900</span></div>
+    <div class="row"><i class="sw" style="background:#e4e1d9"></i><span>surface/200</span></div>
+    <div class="row"><i class="sw" style="background:#ffd8c2"></i><span>tint/peach</span></div>
+  </div>
+  <div class="phone"><div class="screen"><img id="shot" src="../public/projects/movesmart/home.webp" alt=""></div></div>
+</body>
+</html>

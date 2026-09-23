@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1600px; height: 1200px; overflow: hidden; }
+  body { font-family: system-ui, sans-serif; }
+  .stage { position: relative; width: 1600px; height: 1200px; overflow: hidden; background: var(--bg1); }
+  .stage::before { content: ""; position: absolute; inset: 0; background:
+    radial-gradient(900px 700px at 20% 15%, var(--glow1), transparent 60%),
+    radial-gradient(800px 700px at 85% 90%, var(--glow2), transparent 60%),
+    linear-gradient(135deg, var(--bg1), var(--bg2)); }
+  .grid { position: absolute; inset: 0; background-image: radial-gradient(circle at 1px 1px, var(--dot) 1.5px, transparent 2px); background-size: 40px 40px; opacity: .5;
+    -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%); mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%); }
+  .phone { position: absolute; width: 420px; border-radius: 56px; padding: 12px; background: #0b0b0d; box-shadow: 0 60px 120px -40px rgba(0,0,0,.55), 0 20px 40px -20px rgba(0,0,0,.35), inset 0 0 0 2px rgba(255,255,255,.08); }
+  .phone .screen { border-radius: 46px; overflow: hidden; background: #111; aspect-ratio: 390/844; }
+  .phone img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .phone .notch { position: absolute; left: 50%; top: 24px; width: 18px; height: 18px; transform: translateX(-50%); border-radius: 50%; background: #0b0b0d; box-shadow: inset 0 0 0 2px rgba(255,255,255,.06); }
+  .browser { position: absolute; width: 1240px; border-radius: 22px; overflow: hidden; background: #fff; box-shadow: 0 60px 120px -40px rgba(0,0,0,.5), 0 20px 40px -20px rgba(0,0,0,.3), 0 0 0 1px rgba(0,0,0,.06); }
+  .browser .bar { height: 48px; display: flex; align-items: center; gap: 8px; padding: 0 18px; background: #f3f3f1; border-bottom: 1px solid #e5e5e2; }
+  .browser .bar i { width: 12px; height: 12px; border-radius: 50%; background: #d9d9d6; display: block; }
+  .browser .bar .url { margin-left: 16px; flex: 1; height: 28px; border-radius: 8px; background: #fff; border: 1px solid #e5e5e2; }
+  .browser img { width: 100%; display: block; object-fit: cover; object-position: top; }
+</style>
+</head>
+<body>
+  <div class="stage" id="stage">
+    <div class="grid"></div>
+    <div id="devices"></div>
+  </div>
+  <script>
+    // Filled in by the build script via window.render(config)
+    window.render = (cfg) => {
+      const root = document.documentElement.style;
+      root.setProperty("--bg1", cfg.bg[0]);
+      root.setProperty("--bg2", cfg.bg[1]);
+      root.setProperty("--glow1", cfg.accent + (cfg.dark ? "55" : "66"));
+      root.setProperty("--glow2", cfg.accent + (cfg.dark ? "33" : "44"));
+      root.setProperty("--dot", cfg.dark ? "rgba(255,255,255,.18)" : "rgba(0,0,0,.14)");
+      const d = document.getElementById("devices");
+      d.innerHTML = "";
+      const imgs = cfg.images;
+      if (cfg.layout === "phones") {
+        const layouts = {
+          1: [{ left: 620, top: 200, rot: 0, w: 360 }],
+          2: [{ left: 400, top: 250, rot: -6, w: 350 }, { left: 850, top: 190, rot: 4, w: 350 }],
+          3: [{ left: 240, top: 290, rot: -8, w: 330, z: 1 }, { left: 630, top: 170, rot: 0, w: 340, z: 3 }, { left: 1020, top: 290, rot: 8, w: 330, z: 2 }],
+        };
+        (layouts[imgs.length] || layouts[3]).forEach((l, i) => {
+          const el = document.createElement("div");
+          el.className = "phone";
+          el.style.cssText = `left:${l.left}px;top:${l.top}px;width:${l.w}px;transform:rotate(${l.rot}deg);z-index:${l.z || 1}`;
+          el.innerHTML = `<div class="screen"><img src="${imgs[i]}"></div><div class="notch"></div>`;
+          d.appendChild(el);
+        });
+      } else if (cfg.layout === "browser") {
+        const el = document.createElement("div");
+        el.className = "browser";
+        el.style.cssText = `left:200px;top:210px;width:1200px;height:790px;`;
+        el.innerHTML = `<div class="bar"><i></i><i></i><i></i><span class="url"></span></div><img src="${imgs[0]}" style="height:742px">`;
+        d.appendChild(el);
+      } else if (cfg.layout === "mix") {
+        const b = document.createElement("div");
+        b.className = "browser";
+        b.style.cssText = `left:120px;top:210px;width:1140px;height:780px;`;
+        b.innerHTML = `<div class="bar"><i></i><i></i><i></i><span class="url"></span></div><img src="${imgs[0]}" style="height:732px">`;
+        d.appendChild(b);
+        const p = document.createElement("div");
+        p.className = "phone";
+        p.style.cssText = `left:1110px;top:330px;width:320px;transform:rotate(4deg);border-radius:44px;`;
+        p.innerHTML = `<div class="screen" style="border-radius:40px"><img src="${imgs[1]}"></div><div class="notch" style="width:16px;height:16px;top:20px"></div>`;
+        d.appendChild(p);
+      }
+    };
+  </script>
+</body>
+</html>
