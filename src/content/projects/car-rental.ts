@@ -93,7 +93,6 @@ export const carRental: Project = {
       { from: "send", to: "end" },
     ],
   },
-  prototype: { note: "Static home page design; no interactive prototype was part of this delivery." },
   links: [{ label: "Figma file — All designs", href: "https://www.figma.com/design/xhOm00zrgeOXTOny4Kf430/All-designs" }],
   designSystem: {
     colors: [

@@ -109,7 +109,6 @@ export const realEstate: Project = {
       { from: "contact", to: "end" },
     ],
   },
-  prototype: { note: "No prototype was part of this delivery." },
   links: [{ label: "Figma file — Fiverr project", href: "https://www.figma.com/design/n9n1BrYYBDMxDloGVJhT35/Fiverr-project" }],
   designSystem: {
     colors: [

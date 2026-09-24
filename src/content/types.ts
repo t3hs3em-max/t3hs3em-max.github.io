@@ -106,7 +106,6 @@ export interface Project {
   journey: JourneyStage[] | null;
   ia: IANode | null;
   flow: { title: string; nodes: FlowNode[]; edges: FlowEdge[] } | null;
-  prototype: { url?: `https://${string}`; label?: string; note: string };
   designSystem: DesignSystemSpec | null;
   solution: string[];
   outcome: Outcome;

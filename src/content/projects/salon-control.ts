@@ -160,11 +160,6 @@ export const salonControl: Project = {
       { from: "save", to: "end" },
     ],
   },
-  prototype: {
-    url: "https://claude.ai/artifact/T28Lw3i4fkLXHPNEt9MkHs",
-    label: "Open the interactive prototype",
-    note: "A fully interactive HTML prototype covering 15 screens, 20+ modals and states, and tablet/mobile layouts. Every hover, focus, loading, error and toast behaviour is documented in a wiring spec that mirrors the Figma prototype settings.",
-  },
   designSystem: {
     colors: [
       { name: "Green 600", hex: "#0F6E56", role: "Primary actions, active states" },

@@ -13,7 +13,6 @@ import { Compare } from "./Compare";
 import { DesignSystemSection } from "./DesignSystem";
 import { ImageGallery } from "@/components/work/ImageGallery";
 import { Picture } from "@/components/ui/Picture";
-import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { Note, Placeholder, Tag } from "@/components/ui/Primitives";
 import { Reveal } from "@/components/ui/Reveal";
@@ -33,7 +32,6 @@ export function CaseStudy({ project: p }: { project: Project }) {
     { id: "wireframes", label: "Wireframes" },
     { id: "ui", label: "UI design" },
     ...(p.iterations?.length ? [{ id: "iterations", label: "Iterations" }] : []),
-    { id: "prototype", label: "Prototype" },
     { id: "design-system", label: "Design system" },
     { id: "solution", label: "Final solution" },
     { id: "outcome", label: "Outcome" },
@@ -172,24 +170,6 @@ export function CaseStudy({ project: p }: { project: Project }) {
               </div>
             </CaseSection>
           ) : null}
-
-          {/* Prototype */}
-          <CaseSection id="prototype" number={`${num("prototype")} — Prototype`} title="Try it, don't just read it">
-            <Reveal className="surface-card flex flex-col gap-5 p-6 md:flex-row md:items-center md:justify-between md:p-8">
-              <div className="max-w-xl">
-                <p className={`text-[0.9375rem] leading-relaxed ${p.prototype.note.startsWith("[") ? "text-muted" : "text-text-2"}`}>{p.prototype.note}</p>
-              </div>
-              {p.prototype.url ? (
-                <Button href={p.prototype.url} icon="arrowUpRight">
-                  {p.prototype.label ?? "Open prototype"}
-                </Button>
-              ) : (
-                <span className="inline-flex h-11 shrink-0 items-center gap-2 rounded-full border border-dashed border-border-strong px-5 text-small text-muted">
-                  <Icon name="play" size={16} /> Prototype link pending
-                </span>
-              )}
-            </Reveal>
-          </CaseSection>
 
           {/* Design system */}
           <CaseSection id="design-system" number={`${num("design-system")} — Design system`} title="Tokens and components" wide>

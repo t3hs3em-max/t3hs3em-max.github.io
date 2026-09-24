@@ -173,7 +173,6 @@ export const moveSmart: Project = {
       { from: "library", to: "end" },
     ],
   },
-  prototype: { note: "[Prototype link] Add the Figma prototype link here if one can be shared." },
   links: [{ label: "Figma file — All designs", href: "https://www.figma.com/design/xhOm00zrgeOXTOny4Kf430/All-designs" }],
   designSystem: {
     colors: [

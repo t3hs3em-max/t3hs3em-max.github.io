@@ -131,7 +131,6 @@ export const inkwellPens: Project = {
       { from: "act", to: "end", label: "Yes" },
     ],
   },
-  prototype: { note: "[Prototype link] Add the Figma prototype link here if one is shared." },
   links: [{ label: "Figma file — Claud Project", href: "https://www.figma.com/design/XgTrKBnlHj290RPGtC9QxC/Claud-Project" }],
   designSystem: {
     colors: [
